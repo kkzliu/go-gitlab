@@ -1,4 +1,4 @@
-module github.com/xanzy/go-gitlab
+module github.com/kkzliu/go-gitlab
 
 require (
 	github.com/google/go-querystring v1.0.0
@@ -12,4 +12,4 @@ require (
 	google.golang.org/appengine v1.3.0 // indirect
 )
 
-go 1.13
+go 1.12
