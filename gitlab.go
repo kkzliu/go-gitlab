@@ -425,7 +425,11 @@ func (c *Client) configureLimiter(ctx context.Context) error {
 	}()
 
 	// Create a new request.
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, c.baseURL.String(), nil)
+	//req, err := http.NewRequestWithContext(ctx, http.MethodGet, c.baseURL.String(), nil)
+	req, err := http.NewRequest(http.MethodGet, c.baseURL.String(), nil)
+	if req != nil && ctx != nil {
+		req.WithContext(ctx)
+	}
 	if err != nil {
 		return err
 	}
