@@ -20,6 +20,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -70,6 +71,14 @@ type PushEvent struct {
 		Removed  []string `json:"removed"`
 	} `json:"commits"`
 	TotalCommitsCount int `json:"total_commits_count"`
+}
+
+func (event *PushEvent) GetBranchName() string {
+	refIndex := strings.LastIndex(event.Ref, "/")
+	if refIndex > 0 {
+		return event.Ref[refIndex+1 : len(event.Ref)]
+	}
+	return ""
 }
 
 // TagEvent represents a tag event.
